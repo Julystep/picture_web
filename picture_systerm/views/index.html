@@ -1,0 +1,33 @@
+{{ extend './_layouts/home.html'}}
+
+{{ block 'title'}} 首页 {{ /block }}
+{{ block 'head'}}<link rel="stylesheet" href="/public/css/index.css">{{ /block }}
+{{ block 'body'}}
+<div class="container index">
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">Profile</a></li>
+            <li role="presentation"><a href="#">Messages</a></li>
+        </ul>
+</div>
+<div class="container picture"> 
+        <ul class="nav nav-tabs picture">
+            <li role="presentation"><a href="/createRepertory">创建相册</a></li>
+            <li role="presentation"><a href="#">删除相册</a></li>
+        </ul>
+</div>
+<div class="container show">
+        {{each Repertory}}
+        <div class="container inner_show">
+            <form action="/check" method="get">
+                <label>{{ $value.name }}</label>
+                <img src="/public/img/WJJ.jpg" width="181" height="166" alt="图集" />
+                <input type="hidden" value="{{ $value.name }}" name="name">
+                <label>{{ $value.sign }}</label>
+                <label>{{ $value.createDate }}</label>
+                <button type="submit" class="btn btn-info">查看详情</button>
+            </form>
+        </div>
+        {{/each}}
+</div>  
+ {{ /block }}

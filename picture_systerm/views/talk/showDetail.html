@@ -1,0 +1,140 @@
+{{ extend '../_layouts/home.html'}}
+
+{{ block 'title'}} 首页 {{ /block }}
+{{ block 'head'}}<link rel="stylesheet" href="/public/css/showDetails.css">{{ /block }}
+{{ block 'body'}}
+
+<div class="container show">
+    <div class="container user">
+        <p class="p">{{ data.nickname }}</p>
+    </div>
+    <div class="container header">
+        <h1>{{ data.title }}</h1>
+    </div>
+    <div class="container main">
+        <p class="p">{{ data.main }}</p>
+    </div>
+    <div class="container picture">
+        {{ each data.src}}
+        <img src="{{ $value }}" alt="图集" />
+        {{ /each }}
+    </div>
+    <div class="container button">
+        <button type="button" class="btn btn-info" onclick="show()" id="show">发表评论</button>
+        <form action="/output1" method="get" id="input1">
+            <input type="hidden" name="id" value="{{ data._id }}"/>
+            <button type="submit" class="btn btn-info" id="show1">查看评论</button>
+        </form>
+    </div>
+</div>  
+<div class="container input" id="input-div">
+    <form action="/output" method="get" id="input">
+        <label>填写内容</label>
+        <textarea width="100%" name="discuss"></textarea>
+        <input type="hidden" name="id" value="{{ data._id }}" id="id_user"/>
+        <button type="submit" class="btn btn-success">发布</button>
+    </form>
+</div>
+<div class="container discuss">
+</div>
+ {{ /block }}
+ {{ block 'script' }}
+ <script>
+     function show(){
+         var show = document.getElementById('show');
+         show.style.display = 'none';
+         var show1 = document.getElementById('show1');
+         show1.style.display = 'none';
+         var input = document.getElementById('input-div');
+         input.style.display = "block";
+     }
+     $('#input').on('submit', function(e){
+            e.preventDefault();
+            var formData = $(this).serialize();
+            $.ajax({
+                url: '/output',
+                type: 'get',
+                data: formData,
+                dataType: 'json',
+                success: data => {
+                    var err_code = data.err_code;
+                    if(err_code === 1){
+                        window.alert('出现错误');
+                    }else if(err_code === 0){
+                        window.alert('发布成功')
+                        var p =document.getElementsByClassName('p');
+                        p[0].innerHTML = data.data.nickname;
+                        p[1].innerHTML = data.data.main;
+                        var h1 = document.getElementsByTagName('h1')[0];
+                        h1.innerHTML = data.data.title;
+                        var div = document.getElementsByClassName('container picture')[0];
+                        div.innerHTML = "";
+                        for(var i = 0; i < data.data.src.length; i++){
+                            img = document.createElement('img');
+                            img.src = data.data.src[i];
+                            img.alt = '图集';
+                            div.appendChild(img);   
+                        }
+                        var input = document.getElementById('input-div');
+                        input.style.display = "none";
+                        
+                        var discuss = document.getElementsByClassName('container discuss')[0];
+                        discuss.style.display = 'block';
+                        console.log(data.data.discuss.length)
+                        for(var i = 0; i < data.data.discuss.length; i++){
+                            var h4 = document.createElement('h4');
+                            h4.className = 'p1';
+                            var p = document.createElement('p');
+                            p.className = 'word';
+                            h4.innerHTML = data.data.nickname1[i];
+                            p.innerHTML = data.data.discuss[i];
+                            discuss.appendChild(h4);
+                            discuss.appendChild(p);
+                        }
+                    }
+                }
+            })
+        })
+
+        $('#input1').on('submit', function(e){
+            e.preventDefault();
+            var formData = $(this).serialize();
+            $.ajax({
+                url: '/output1',
+                type: 'get',
+                data: formData,
+                dataType: 'json',
+                success: data => {
+                    var err_code = data.err_code;
+                    if(err_code === 1){
+                        window.alert('出现错误');
+                    }else if(err_code === 0){
+                        
+                        var show = document.getElementById('show');
+                        show.style.display = 'none';
+
+                        var show1 = document.getElementById('show1');
+                        show1.style.display = 'none';
+
+
+                        var input = document.getElementById('input-div');
+                        input.style.display = "none";
+                        
+                        var discuss = document.getElementsByClassName('container discuss')[0];
+                        discuss.style.display = 'block';
+                        for(var i = 0; i < data.data.discuss.length; i++){
+                            var h4 = document.createElement('h4');
+                            h4.className = 'p1';
+                            var p = document.createElement('p');
+                            p.className = 'word';
+                            h4.innerHTML = data.data.nickname1[i];
+                            p.innerHTML = data.data.discuss[i];
+                            discuss.appendChild(h4);
+                            discuss.appendChild(p);
+                        }
+                    }
+                }
+            })
+        })
+ </script>
+ {{ /block }}

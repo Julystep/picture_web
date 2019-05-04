@@ -1,0 +1,18 @@
+{{ extend '../_layouts/home.html'}}
+
+{{ block 'title'}} 用户信息 {{ /block }}
+{{ block 'head'}}<link rel="stylesheet" href="/public/css/userInfo.css">{{ /block }}
+{{ block 'body'}}
+<div class="container userInfo">
+    <ul class="nav nav-pills nav-stacked">
+        <li role="presentation">昵称：{{ user.nickname }}</li>
+        <li role="presentation">性别：{{ user.gender }}</li>
+        <li role="presentation">电话：{{ user.tele }}</li>
+        <li role="presentation">邮箱：{{ user.email }}</li>
+    </ul>
+    <div class="btn-group">
+        <a href="/user/editInfo"><button class="btn btn-success">修改信息</button></a>
+        <a href="/user/editPwd"><button class="btn btn-success">修改密码</button></a>
+    </div>
+</div>
+ {{ /block }}

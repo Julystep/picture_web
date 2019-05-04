@@ -1,0 +1,60 @@
+ 
+
+.container.show{
+    position: relative;
+    top: 0px;
+    left: 20px;
+    width: 100%;
+    text-align: left;
+    height:900px;
+}
+
+.container.show .container.picture img{
+    max-height: 300px;
+    min-height: 100px;
+    max-width: 300px;
+    min-width: 100px;
+}
+
+.container.show .container.main{
+    padding: 20px;
+}
+
+.container.show .container.button button{
+    margin: 20px;
+    padding: 10px;
+}
+
+.container.input{
+    text-align: left;
+    position: absolute;
+    top: 550px;
+    left: 10%;
+    display: none;
+}
+.container.input textarea{
+    width:80%;
+    height: 100px;
+}
+.container.input button{
+    padding: 10px;
+}
+.container.discuss{
+    position: absolute;
+    top: 550px;
+    left: 10%;
+    overflow: scroll;
+    display: none;
+    height: 300px;
+}
+.container.discuss .p1 {
+    font-size: 15px;
+    font-weight: 800;
+    
+}
+.container.discuss .word{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.431);
+    position: relative;
+    left: 15px;
+}
+

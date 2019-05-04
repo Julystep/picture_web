@@ -1,0 +1,92 @@
+.nav.nav-pills.nav-stacked{
+    position: relative;
+    padding: 5px 1px;
+    font-size: 18px;
+    margin: 0px;
+    height: 900px;
+
+}
+.container.index{
+    position: relative;
+    left: 0px;
+    width: 200px;
+    margin: 0px;
+    padding: 0px;
+    border-right-style: solid;
+    border-right-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 3px;
+}
+
+.container.picture{
+    position: absolute;
+    left: 210px;
+    top: 45px;
+}
+.nav.nav-tabs.picture{
+    position: relative;
+    padding: 5px 1px;
+    font-size: 15px;
+    margin: 0px;
+    height: 100%;
+}
+.container.show{
+    position: absolute;
+    left: 210px;
+    margin: 0px;
+    padding: 0px;
+    top: 100px;
+    height: 840px;
+    background-color: rgba(255, 255, 255, 0.877);
+    overflow: scroll;
+    text-align: center;
+}
+.container.show  .container.inner_show{
+    padding: 10px;
+    margin: 0;
+    width: 350px;
+    height: 300px;
+    float: left;
+    text-align: center;
+    border: 1px solid black;
+}
+
+.container.show  .container.inner_show img{
+    cursor: pointer;
+    border-radius: 5px; 
+    max-height: 250px;
+    min-height: 250px;
+    
+}
+.container.show  .container.inner_show img:hover{
+    opacity: 0.7;
+}
+.container.picture .nav.nav-tabs.picture li form{
+    margin-top: 20px;
+    padding: 0px;
+}
+.container.show  .container.inner_show button{
+    margin-top: 5px;
+    padding: 5px;
+}
+.container.show button{
+    margin-top: 10px;
+    padding: 10px 30px;
+    display: none;
+}
+.container.show  .container.inner_show .checkbox{
+    display: none;
+}
+.container.show  .container.inner_show #clabel{
+    display: none;
+    font-size: 10px;
+    font-weight: 700;
+}
+.container.show .container.input .form-group{
+    text-align: center;
+    display: blcok;
+    width: 200px;
+    float: none;
+    display: none;
+}
+
+

@@ -1,0 +1,126 @@
+{{ extend '../_layouts/home.html'}}
+
+{{ block 'title'}} 图片 {{ /block }}
+{{ block 'head'}}<link rel="stylesheet" href="/public/css/check.css">{{ /block }}
+{{ block 'body'}}
+<div class="container index">
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation"><a href="#">Home</a></li>
+            <li role="presentation"><a href="#">Profile</a></li>
+            <li role="presentation"><a href="#">Messages</a></li>
+        </ul>
+</div>
+<div class="container picture"> 
+        <ul class="nav nav-tabs picture">
+            <li role="presentation">
+                <form action="/Insert/picture" method="post" enctype="multipart/form-data" id="subFile">
+                <input id="picture" type="file" name="file" class="btn btn-success" />
+                <input type="hidden" name="name" value="{{ name }}" id="name">
+                <button type="submit" class="btn btn-info">插入图片</button>
+                </form>
+            </li>
+            <li>
+                <form >
+                    <button type="button" class="btn btn-info" onclick="select()">分享图片</button>
+                </form>
+            </li>
+        </ul>
+</div> 
+<div class="container show">
+    
+    {{each files}}
+    <div class="container inner_show">
+        <img src='/repertoies/{{ email }}/{{ name }}/{{ $value }}' width="300" height="200" alt="图集" class="imge"/>
+        <input type="checkbox" class="checkbox" ><label id="clabel">选择图片</label>
+    </div>
+    {{/each}}
+    <div class="container input">
+    <form class="form-group" action="/handup" method="post" id="formShow" enctype="multipart/form-data">
+            <input type="text" class="form-control" id="title" placeholder="输入标题" width="200px" required>
+            <textarea rows="3px" width="200px" placeholder="输入内容" id="main" required></textarea>
+            <button type="submit" class="btn btn-success" id="subSelect">提交</button>
+    </form>
+    </div>
+</div>
+
+ {{ /block }}
+ {{ block 'script'}}
+
+ <script>
+    $('#subFile').on('submit', function(e){
+        e.preventDefault();
+        let formData = new FormData();
+        formData.append("file", $("#picture")[0].files[0]);
+        formData.append("name", $("#name").val());
+        $.ajax({
+            url : '/Insert/picture',
+            type: 'post',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: data => {
+                var err_code = data.err_code;
+                if(err_code === 1){
+                    window.alert('文件格式不正确');
+                }else if(err_code === 2){
+                    window.alert('读取文件失败');
+                }else if(err_code === 0){
+                    window.alert('成功');
+                    window.location.href = '/check?name={{ name }}';
+                }else if(err_code === 3){
+                    window.alert('写文件失败');
+                }
+            }
+        })
+    })
+    
+    $('#formShow').on('submit', function(e){
+        e.preventDefault();
+        let formData1 = new FormData();
+        var img = document.getElementsByClassName('imge');
+        var check = document.getElementsByClassName('checkbox');
+        var pictures;
+        formData1.append("main", $("#main").val());
+        formData1.append('title',$('#title').val());
+        for(var i = 0, j = 0; i < img.length; i++){
+            if(check[i].checked){
+                formData1.append('pictures', img[i].src);
+            }
+        }
+        $.ajax({
+            url : '/handup',
+            type: 'post',
+            data: formData1,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: data => {
+                var err_code = data.err_code;
+                if(err_code === 0){
+                    window.alert('发布成功');
+                    window.location.href = '/showComments';
+                }else if(err_code === 500){
+                    window.alert('服务器故障');
+                }
+                else if(err_code === 1){
+                    window.alert('发布失败');
+                }
+            }
+        })
+    })
+
+    function select(){
+        var checkbox = document.getElementsByClassName('checkbox');
+        var label = document.getElementsByTagName('label');
+        var subSelect = document.getElementById('subSelect');
+        var form = document.getElementsByClassName('form-group')[0];
+
+        for(var i = 0; i < checkbox.length; i++){
+            checkbox[i].style.display = "table";
+            label[i].style.display = "table";
+        }
+        subSelect.style.display = "inline";
+        form.style.display = "block";
+    }
+ </script>
+ {{ /block }}

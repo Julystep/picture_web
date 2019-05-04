@@ -1,0 +1,19 @@
+.nav.nav-pills.nav-stacked{
+    position: relative;
+    padding: 5px 1px;
+    font-size: 18px;
+    margin: 0px;
+    height: 100%;
+
+}
+.container.index{
+    position: relative;
+    left: 0px;
+    height: 900px;
+    width: 200px;
+    margin: 0px;
+    padding: 0px;
+    border-right-style: solid;
+    border-right-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 3px;
+}

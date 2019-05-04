@@ -1,0 +1,38 @@
+{{ extend '../_layouts/home.html'}}
+
+{{ block 'title'}} 用户信息 {{ /block }}
+{{ block 'body'}}
+<form id="chang-form" method="post" action="/login">
+    <div class="form-group">
+      <label for="exampleInputnickName">输入密码</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="password" name="password" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputtele">确认密码</label>
+        <input type="password" class="form-control" id="exampleInputPassword2" placeholder="SecondPassword" name="SecondPassword" required>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+ {{ /block }}
+ {{ block 'script'}}<script> 
+      $('#chang-form').on('submit', function(e){
+          e.preventDefault();
+          let formData = $(this).serialize();
+          $.ajax({
+              url: '/user/editPwd',
+              type: 'post',
+              data: formData,
+              dataType: 'json',
+              success : data => {
+                var err_code = data.err_code;
+                    if(err_code === 1){
+                        window.alert('密码不相同');
+                    }else if(err_code === 0){
+                        window.location.href = '/login';
+                    }else if(err_code === 500){
+                        window.alert('服务器繁忙，稍后再试');
+                    }
+              }
+          })
+      }) 
+ </script> {{ /block}}

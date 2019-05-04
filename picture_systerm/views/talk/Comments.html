@@ -1,0 +1,23 @@
+{{ extend '../_layouts/home.html'}}
+
+{{ block 'title'}} 首页 {{ /block }}
+{{ block 'head'}}<link rel="stylesheet" href="/public/css/Comments.css">{{ /block }}
+{{ block 'body'}}
+
+<div class="container show">
+        {{each data}}
+        <div class="container inner_show">
+            <div class="container head">
+                <p>{{ $value.nickname }}</p>
+                <a href="/show/details?id={{ $value._id }}"><p>{{ $value.title }}</p></a>
+            </div>
+            <div class="container picture">
+                <p>{{ $value.main }}</p>
+                {{ each $value.src}}
+                <img src="{{ $value }}" alt="图集" />
+                {{ /each }}
+            </div>
+        </div>
+        {{/each}}
+</div>  
+ {{ /block }}

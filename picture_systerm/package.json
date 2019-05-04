@@ -1,0 +1,31 @@
+{
+  "name": "picture_systerm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "art-template": "4.13.2",
+    "blueimp-md5": "2.10.0",
+    "body-parser": "1.19.0",
+    "bootstrap": "4.3.1",
+    "connect-multiparty": "2.2.0",
+    "cookie": "0.3.1",
+    "debug": "4.1.1",
+    "depd": "2.0.0",
+    "express": "4.16.4",
+    "express-art-template": "1.0.1",
+    "express-session": "1.16.1",
+    "jquery": "3.4.0",
+    "mongoose": "5.5.4",
+    "multer": "1.4.1",
+    "on-headers": "1.0.2",
+    "popper": "1.0.1",
+    "safe-buffer": "5.1.2"
+  }
+}

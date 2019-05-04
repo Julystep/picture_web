@@ -1,0 +1,39 @@
+{{ extend '../_layouts/home.html'}}
+
+{{ block 'title'}} 创建相册 {{ /block }}
+{{ block 'body'}}
+<form id="create-repertory" method="post" action="/index">
+    <div class="form-group">
+        <input type="hidden" name="email", value="{{user.email}}"> 
+      <label for="exampleInputnickName">名称</label>
+      <input type="text" class="form-control" id="RepertoryName" placeholder="RepertoryName" name="name" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputtele">标注</label>
+        <input type="text" class="form-control" id="Sign" placeholder="Sign" name="sign">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+</form>
+ {{ /block }}
+ {{ block 'script'}}<script> 
+      $('#create-repertory').on('submit', function(e){
+          e.preventDefault();
+          let formData = $(this).serialize();
+          $.ajax({
+              url: '/createRepertory',
+              type: 'post',
+              data: formData,
+              dataType: 'json',
+              success : data => {
+                var err_code = data.err_code;
+                    if(err_code === 1){
+                        window.alert('仓库名称重复');
+                    }else if(err_code === 0){
+                        window.location.href = '/index';
+                    }else if(err_code === 500){
+                        window.alert('服务器繁忙，稍后再试');
+                    }
+              }
+          })
+      }) 
+ </script> {{ /block}}

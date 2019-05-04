@@ -1,0 +1,27 @@
+
+
+.container.show{
+    position: relative;
+    top: 0px;
+    left: 30px;
+    width: 100%;
+    text-align: left;
+}
+.container.show .container.inner_show .container.head{
+    text-align: left;
+    font-size: 10px;
+    font-weight: 700px;
+    padding: 0px 10px;
+
+}
+.container.show .container.inner_show .container.picture{
+    padding-bottom : 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.472);
+}
+
+.container.show .container.inner_show .container.picture img{
+    max-height: 100px;
+    min-height: 100px;
+    max-width: 100px;
+    min-width: 100px;
+}
