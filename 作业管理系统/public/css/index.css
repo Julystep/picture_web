@@ -1,0 +1,49 @@
+body{
+    background-color: grey;
+}
+.navbar.navbar-transparent{
+    position: fixed;
+    width: 100%;
+    height: 70px;
+}
+.navbar-header{
+    position: relative;
+    margin-left: 85px;
+}
+.navbar-brand .navbar-text{
+    font-size: xx-large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: white;
+    font-weight: bolder;
+}
+.navbar-body{
+    position: relative;
+    width: 320px;
+    margin-right: 85px;
+}
+.navbar-body ul{
+    padding: 0px;
+    width: 100%;
+    display: inline-block;
+    list-style-type: none;
+}
+.navbar-body ul li{
+    float: left;
+    width: 100px;
+    margin-left: 40px;
+    text-align: center;
+    border: 1px solid white;
+    border-radius: 32px;
+    padding: 4px 25px;
+}
+.navbar-body ul li:hover{
+    background-color: orange;
+    cursor: pointer;
+    color: white;
+}
+.navbar-body ul li a{
+    color: white;
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+}

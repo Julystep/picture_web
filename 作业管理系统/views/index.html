@@ -1,0 +1,78 @@
+{{ extend  './layouts/home.html' }}
+
+{{ block 'title'}}首页{{ /block }}
+{{ block 'head' }}<link rel="stylesheet" href="/public/css/index1.css">{{ /block }}
+{{ block 'body'}}
+<div class="container login" id="login_module">
+    <div class="container header">
+        <p>登录<span id="dismiss1">&times;</span></p>
+        
+    </div>
+    <div class="container form">
+        <form action="/" method="post" id="form_login">
+            <input class="form-control" id="id" name="id" placeholder="请输入ID"/>
+            <input class="form-control" id="pwd" name="pwd" placeholder="请输入密码"/>
+            <input class="btn btn-success" type="submit" value="登录">
+        </form>
+    </div>
+</div>
+
+<div class="container register" id="register_module">
+    <div class="container header">
+        <p>注册<span id="dismiss2">&times;</span></p>
+        
+    </div>
+    <div class="container form">
+        <form action="/" method="post" id="form_register">
+            <input class="form-control" id="id" name="id" placeholder="请输入ID"/>
+            <input class="form-control" id="id" name="id" placeholder="请输入ID"/>
+            <input class="form-control" id="pwd" name="pwd" placeholder="请输入密码"/>
+            <label>选择性别</label>
+            <select class="form-control">
+                <option value="男">男</option>
+                <option value="女">女</option>
+            </select>
+            <label>选择班级</label>
+            <select class="form-control">
+                <option value="01">一班</option>
+                <option value="02">二班</option>
+                <option value="03">三班</option>
+            </select>
+            <input class="btn btn-success" type="submit" value="注册">
+        </form>
+    </div>
+</div>
+{{ /block }}
+{{ block 'script'}}
+<script>
+    function login(){
+        var div = document.getElementById('login_module');
+        div.style.display = "block";
+    }
+    function register(){
+        var div = document.getElementById('register_module');
+        div.style.display = "block";
+    }
+    document.getElementById('dismiss1').onclick = function(){
+        var div = document.getElementById('login_module');
+        div.style.display = 'none';
+    }
+    document.getElementById('dismiss2').onclick = function(){
+        var div = document.getElementById('register_module');
+        div.style.display = 'none';
+    }
+    $('#form_login').on('submit', function(e){
+        e.preventDefault();
+        var formData = $(this).serialize();
+        $.ajax({
+            url: '/',
+            type: 'post',
+            data: formData,
+            dataType: 'json',
+            success: data => {
+                console.log('yes');
+            }
+        })
+    })
+</script>
+{{ /block }}
