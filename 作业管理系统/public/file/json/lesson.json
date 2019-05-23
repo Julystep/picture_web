@@ -1,0 +1,7 @@
+{
+    "lessons" :[
+        {"name": "计算机算法", "teacher": "Ms Yang"},
+        {"name": "计算机编译原理", "teacher": "Ms Tian"},
+        {"name": "计算机导论", "teacher": "Ms zhang"}
+    ]
+}

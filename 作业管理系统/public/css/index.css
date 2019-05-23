@@ -1,5 +1,8 @@
 body{
     background-color: grey;
+    background-image: url('../img/1.jpg');
+    background-repeat: no-repeat;
+    background-size: 2000px 1000px;
 }
 .navbar.navbar-transparent{
     position: fixed;
@@ -15,6 +18,9 @@ body{
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: white;
     font-weight: bolder;
+}
+.navbar-brand .navbar-text:hover{
+    color: orange;
 }
 .navbar-body{
     position: relative;
@@ -36,6 +42,7 @@ body{
     border-radius: 32px;
     padding: 4px 25px;
 }
+
 .navbar-body ul li:hover{
     background-color: orange;
     cursor: pointer;
@@ -46,4 +53,24 @@ body{
     font-size: 16px;
     width: 100%;
     height: 100%;
+}
+.container ul{
+    display: inline-block;
+    padding: 0px;
+    list-style-type: none;
+}
+.container ul li{
+    float: left;
+    padding-left: 40px;
+
+}
+.container ul li #a{
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+.container ul li #a:hover{
+    color: orange;
+    font-size: 20px;
 }

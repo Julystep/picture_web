@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>{{block 'title'}}默认标题{{/block}}</title>
+  <link href="/node_modules/_bootstrap@4.3.1@bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/index.css">
+  {{block 'head'}}{{/block}}
+</head>
+
+<body>
+  {{include '../template/header1.html'}}
+  {{block 'body'}}{{/block}}
+  {{include '../template/footer.html'}}
+  <script src="/node_modules/_jquery@3.4.1@jquery/dist/jquery.min.js"></script> 
+  <script src="/node_modules/_bootstrap@4.3.1@bootstrap/dist/js/bootstrap.min.js"></script>
+  {{block 'script'}}{{/block}}
+</body>
+
+</html>

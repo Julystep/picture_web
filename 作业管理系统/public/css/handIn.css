@@ -1,0 +1,35 @@
+.head{
+    position: absolute;
+    top: 120px;
+    color: white;
+}
+.table.table-striped{
+    position: relative;
+    top: 320px;
+    font-weight: bolder;
+    color: white;
+    cursor: pointer;
+}
+.table.table-striped tr:hover{
+    color: orange;
+}
+.table.table-striped td a{
+    color: white;
+    text-align: none;
+}
+.table.table-striped td a:hover{
+    color: orange;
+}
+.sub{
+    position: absolute;
+    display: none;
+    top: 220px;
+    width: 300px;
+    background-color: transparent;
+    cursor: pointer;
+}
+.sub button{
+    width: 50%;
+    float: left;
+    background-color: transparent;
+}

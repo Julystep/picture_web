@@ -7,8 +7,8 @@
     padding: 50px 80px;
     margin-top: 200px;
     margin-left: 32%;
-    animation: login 1s;
-    -webkit-animation: login 1s;
+    animation: login 0.5s;
+    -webkit-animation: login 0.5s;
     display: none;
 }
 @keyframes login{
@@ -52,11 +52,11 @@
     padding: 50px 80px;
     margin-top: 200px;
     margin-left: 32%;
-    animation: login 1s;
-    -webkit-animation: login 1s;
+    animation: register 0.5s;
+    -webkit-animation: register 0.5s;
     display: none;
 }
-@keyframes login{
+@keyframes register{
     from{top: -300px; opacity: 0;}
     to{top: 0px; opacity: 1;}
 }

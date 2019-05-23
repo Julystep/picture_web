@@ -1,0 +1,63 @@
+{{ extend  './layouts/home1.html' }}
+
+
+{{ block 'head'}}<link rel="stylesheet" href="/public/css/handIn.css"/>{{ /block }}
+{{ block 'body'}}
+<div class="container head">
+    <h2>课程名称</h2>
+</div>
+<div class="container table">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>作业次数</th>
+                <th>提交相应作业</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+<div class="container sub">
+    <form action="/handInHomeWork" method="POST">
+        <input type="file" class="form-control"/>
+        <button class="btn btn-success" type="submit">提交</button>
+        <button class="btn btn-danger" type="button" onclick="dismiss()">关闭</button>
+    </form>
+</div>
+{{ /block}}
+
+{{ block 'script'}}
+<script>
+    window.onload = function(){
+        $.ajax({
+            url: '/public/file/json/work.json',
+            type: 'get',
+            success: data => {
+                var works = data.works;
+                var tbody = document.getElementsByTagName('tbody')[0];
+                for(var i = 0; i < works.length; i++){
+                    var tr = document.createElement('tr');
+                    var td1 = document.createElement('td');
+                    var td2 = document.createElement('td');
+                    var p = document.createElement('p');
+                    p.onclick = submit;
+                    p.innerHTML = "点击提交>>";
+                    td2.append(p);
+                    td1.innerHTML = works[i].number;
+                    tr.append(td1);
+                    tr.append(td2);
+                    tbody.append(tr);
+                }
+            }
+        })
+    }
+    function submit(){
+        $('.sub').css('display', 'block');
+    }
+    function dismiss(){
+        $('.sub').css('display', 'none');
+    }
+</script>
+{{ /block }}

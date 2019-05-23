@@ -8,6 +8,8 @@ const session = require('express-session');
 
 const router = require('./router/router-sign');
 
+const router1 = require('./router/router-main');
+
 const app = express();
 
 app.engine('html', require('express-art-template'));
@@ -25,6 +27,7 @@ app.use(session({
 }))
 
 app.use(router);
+app.use(router1);
 
 
-app.listen(3000, () => console.log('Server is running'));
+app.listen(4000, () => console.log('Server is running'));

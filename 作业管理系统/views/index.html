@@ -10,8 +10,8 @@
     </div>
     <div class="container form">
         <form action="/" method="post" id="form_login">
-            <input class="form-control" id="id" name="id" placeholder="请输入ID"/>
-            <input class="form-control" id="pwd" name="pwd" placeholder="请输入密码"/>
+            <input class="form-control"  name="id" placeholder="请输入ID"  required/>
+            <input type="password" class="form-control"  name="pwd" placeholder="请输入密码" required/>
             <input class="btn btn-success" type="submit" value="登录">
         </form>
     </div>
@@ -24,19 +24,19 @@
     </div>
     <div class="container form">
         <form action="/" method="post" id="form_register">
-            <input class="form-control" id="id" name="id" placeholder="请输入ID"/>
-            <input class="form-control" id="id" name="id" placeholder="请输入ID"/>
-            <input class="form-control" id="pwd" name="pwd" placeholder="请输入密码"/>
+            <input class="form-control"  name="id" placeholder="请输入ID" required/>
+            <input class="form-control"  name="name" placeholder="请输入姓名" required/>
+            <input type="password" class="form-control"  name="pwd" placeholder="输入密码" required/>
             <label>选择性别</label>
-            <select class="form-control">
-                <option value="男">男</option>
-                <option value="女">女</option>
+            <select class="form-control" name="gender">
+                <option value="男" name="gender">男</option>
+                <option value="女" name="gender">女</option>
             </select>
             <label>选择班级</label>
-            <select class="form-control">
-                <option value="01">一班</option>
-                <option value="02">二班</option>
-                <option value="03">三班</option>
+            <select class="form-control" name="Class">
+                <option value="01" name="Class">一班</option>
+                <option value="02" name="Class">二班</option>
+                <option value="03" name="Class">三班</option>
             </select>
             <input class="btn btn-success" type="submit" value="注册">
         </form>
@@ -44,35 +44,5 @@
 </div>
 {{ /block }}
 {{ block 'script'}}
-<script>
-    function login(){
-        var div = document.getElementById('login_module');
-        div.style.display = "block";
-    }
-    function register(){
-        var div = document.getElementById('register_module');
-        div.style.display = "block";
-    }
-    document.getElementById('dismiss1').onclick = function(){
-        var div = document.getElementById('login_module');
-        div.style.display = 'none';
-    }
-    document.getElementById('dismiss2').onclick = function(){
-        var div = document.getElementById('register_module');
-        div.style.display = 'none';
-    }
-    $('#form_login').on('submit', function(e){
-        e.preventDefault();
-        var formData = $(this).serialize();
-        $.ajax({
-            url: '/',
-            type: 'post',
-            data: formData,
-            dataType: 'json',
-            success: data => {
-                console.log('yes');
-            }
-        })
-    })
-</script>
+<script src="/public/js/index.js"></script>
 {{ /block }}

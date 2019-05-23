@@ -1,0 +1,54 @@
+{{ extend  './layouts/home1.html' }}
+
+
+{{ block 'head'}}<link rel="stylesheet" href="/public/css/handIn.css"/>{{ /block }}
+{{ block 'body'}}
+<div class="container lessons" id="lessons"></div>
+<a href="/handInHomeWork">点击进入</a>
+{{ /block}}
+
+{{ block 'script'}}
+<script src="/public/js/handIn.js"></script>
+<script>
+    $.ajax({
+        url: '/public/file/json/lesson.json',
+        type: 'get',
+        success: data => {
+            var lessons = data.lessons;
+            var lessons1 = document.getElementById("lessons");
+            for(var i = 0; i < lessons.length; i++){
+                var div = document.createElement('div');
+                div.className = 'container col-lg-3 col-md-3 col-xs-10';
+                var form = document.createElement('form');
+                form.className = 'formShow';
+                form.enctype = 'multipart/form-data';
+                form.method = 'post';
+                var h3 = document.createElement('h3');
+                h3.innerHTML = lessons[i].name;
+                var p = document.createElement('p');
+                p.innerHTML = lessons[i].teacher;
+                input1 = document.createElement('input');
+                input1.value = lessons[i].name;
+                input1.name = 'name';
+                input1.hidden = true;
+                input2 = document.createElement('input');
+                input2.value = lessons[i].teacher;
+                input2.name = 'teacher';
+                input2.hidden = true;
+                var btn = document.createElement('button');
+                btn.className = 'btn btn-success';
+                btn.innerHTML = '点击进入>>';
+                btn.type = 'submit';
+                form.append(h3);
+                form.append(p);
+                form.append(input1);
+                form.append(input2);
+                form.append(btn);
+                div.append(form);
+                console.log(div);
+                lessons1.append(div);
+            }
+        }
+    })
+</script>
+{{ /block }}

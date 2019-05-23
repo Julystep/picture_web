@@ -1,10 +1,16 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/homework_System', {useNewUrlParser : true});
+mongoose.connect('mongodb://localhost/HomeWork', {useNewUrlParser : true}, (err) => {
+if(err){
+    console.log("连接失败" + err.message);
+}else console.log("连接成功");
+});
 
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
+console.log('success');
+
+const studentSchema = new Schema({
     id:{
         type: String,
         required: true
@@ -28,4 +34,4 @@ const userSchema = new Schema({
     }
 })
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('Student', studentSchema);

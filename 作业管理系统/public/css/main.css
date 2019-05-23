@@ -1,0 +1,39 @@
+.info{
+    display: none;
+    position: absolute;
+    overflow: hidden;
+    padding: 0px;
+    width: 80px;
+    height: 110px;;
+    cursor: pointer;
+    border: 2px black solid;
+    width: 224px;
+    text-align: center;
+    right: 13%;
+    top: 6.2%;
+}
+.info ul{
+    background-color: whitesmoke;
+    display: block;
+    text-align: center;
+    margin: 0px;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+}
+.info ul li{
+    margin-top: 5px;
+    padding: 10px 0px 10px 0px;
+    width: 100%;
+}
+.info ul li{
+    border-bottom: 2px solid black;
+}
+.info ul li a{
+    color: black;
+    text-align: none;
+    font-size: 18px;
+}
+.info ul li a:hover{
+    color: orange;
+}

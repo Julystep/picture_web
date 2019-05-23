@@ -1,0 +1,13 @@
+{{ extend  './layouts/home1.html' }}
+
+{{ block 'head'}}<link rel="stylesheet" href="/public/css/main.css">{{ /block }}
+
+{{ block 'body'}}
+<div class="container info">
+    <ul>
+        <li><a href="javascript:;">我的信息</a></li>
+        <li><a href="javascript:;">修改密码</a></li>
+    </ul>
+</div>
+{{ block 'script'}}<script src="/public/js/main.js"></script>{{ /block }}
+{{ /block }}
